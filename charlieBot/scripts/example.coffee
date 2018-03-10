@@ -37,7 +37,7 @@ module.exports = (robot) ->
 
   enterReplies = ['Hi', 'Target Acquired', 'Firing', 'Hello friend.', 'Gotcha', 'I see you']
   leaveReplies = ['Are you still there?', 'Target lost', 'Searching']
-
+  
   robot.enter (res) ->
     res.send res.random enterReplies
   robot.leave (res) ->
@@ -50,7 +50,7 @@ module.exports = (robot) ->
       res.send "Missing HUBOT_ANSWER_TO_THE_ULTIMATE_QUESTION_OF_LIFE_THE_UNIVERSE_AND_EVERYTHING in environment: please set and try again"
       return
     res.send "#{answer}, but what is the question?"
-
+    
   robot.respond /you are a little slow/, (res) ->
     setTimeout () ->
       res.send "Who you calling 'slow'?"
@@ -76,11 +76,11 @@ module.exports = (robot) ->
     else
       res.send "Not annoying you right now, am I?"
 
-
   robot.router.post '/hubot/chatsecrets/:room', (req, res) ->
     room   = req.params.room
     data   = JSON.parse req.body.payload
     secret = data.secret
+
 
     robot.messageRoom room, "I have a secret: #{secret}"
 
@@ -103,6 +103,7 @@ module.exports = (robot) ->
       res.reply 'Sure!'
 
       robot.brain.set 'totalSodas', sodasHad+1
+
 
   robot.respond /sleep it off/i, (res) ->
     robot.brain.set 'totalSodas', 0

@@ -3,9 +3,9 @@
 // commands:
 var authKey = require('../../authKey.js')
 module.exports = function (robot) {
-  robot.hear(/bootcampers/i, function (res) {
-    res.send("It's going");
-  });
+//   robot.hear(/bootcampers/i, function (res) {
+//     res.send("It's going");
+//   });
   robot.respond(/list channels/i, function (res) {
     var slackURL = "https://slack.com/api/channels.list?token=" + authKey.authKey
     robot.http(slackURL)
